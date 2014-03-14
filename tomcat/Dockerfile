@@ -28,7 +28,7 @@ ADD /etc/supervisor/conf.d/tomcat.conf /etc/supervisor/conf.d/
 ADD /root/start/tomcat.sh /root/start/
 RUN chmod u+x /root/start/tomcat.sh
 
-EXPOSE 22 8080 8443
+EXPOSE 22 8080 8443 8998
 
 VOLUME ["/var/lib/tomcat7/webapps"]
 

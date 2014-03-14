@@ -18,7 +18,7 @@ RUN apt-get -y install supervisor openssh-server
 RUN mkdir /var/run/sshd
 RUN /usr/sbin/sshd
 RUN sed -i 's/.*session.*required.*pam_loginuid.so.*/session optional pam_loginuid.so/g' /etc/pam.d/sshd
-RUN /bin/echo -e "LANG=\"en_US.UTF-8\"" > /etc/default/local
+RUN /bin/echo -e "LANG=\"en_US.UTF-8\"" > /etc/default/locale
 
 # Use some reporting/logging tools to report to master
 RUN apt-get -y install collectd rsyslog
@@ -31,6 +31,7 @@ RUN apt-get -y install telnet rsync vim
 ADD /etc/supervisor/conf.d/collectd.conf /etc/supervisor/conf.d/
 ADD /etc/supervisor/conf.d/docker.conf /etc/supervisor/conf.d/
 ADD /etc/supervisor/conf.d/rsyslog.conf /etc/supervisor/conf.d/
+ADD /etc/rsyslog.d/50-default.conf /etc/rsyslog.d/
 ADD /etc/supervisor/conf.d/sshd.conf /etc/supervisor/conf.d/
 ADD /root/start/collectd.sh /root/start/
 ADD /root/start/rsyslog.sh /root/start/

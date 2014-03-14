@@ -1,3 +1,4 @@
 [mysqld]
 bind-address = 0.0.0.0
 skip-name-resolve
+log-error=error.log
